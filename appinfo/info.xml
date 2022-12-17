@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<info xmlns:xsi= "http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="https://apps.nextcloud.com/schema/apps/info.xsd">
+    <!--
+    SPDX-FileCopyrightText: Christian Wolf <github@christianwolf.email>
+    SPDX-License-Identifier: CC0-1.0
+    -->
+    <id>snowflakestheme</id>
+    <name>Snowflakes Theme</name>
+    <summary>A simple app to show some snowflakes in the cloud web interface</summary>
+    <description><![CDATA[safasf
+
+asf]]></description>
+    <version>0.0.1</version>
+    <licence>agpl</licence>
+    <author mail="github@christianwolf.email" >Christian Wolf</author>
+    <namespace>SnowflakesTheme</namespace>
+    <category>customization</category>
+    <bugs>https://wb.de</bugs>
+    <dependencies>
+        <nextcloud min-version="25" max-version="25"/>
+    </dependencies>
+</info>
