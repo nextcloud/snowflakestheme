@@ -10,34 +10,43 @@ import { loadState } from '@nextcloud/initial-state'
     // const val = loadState('myapp', 'user_preference')
     
     // Provide a fallback value to return when the state is not found
-    const valWithFallback = loadState('snowflakestheme', 'foo', 'no_preference');
-    window.console.error(valWithFallback, valWithFallback.a);
+    const defaultSettings = {
+        numFlakes: 35,
+        color: ["#DDD", "#EEE"],
+        speed: 0.75,
+        size: [5, 20],
+        refresh: 15,
+        lrMultiplicator: 10,
+        lrDivider: 20
+    }
+    const settings = loadState('snowflakestheme', 'settings', defaultSettings);
+    window.console.debug('Using setting for the snowflakes', settings);
 
     // Amount of Snowflakes
     // Recommended: 35
-    const snowMax = 35;
+    const snowMax = settings.numFlakes;
 
     // Snowflake Colours
-    const snowColor = ["#DDD", "#EEE"];
+    const snowColor = settings.color;
 
     // Snow Entity
     const snowEntity = "&#x2022;";
 
     // Falling Velocity
     // Recommended: 0.75
-    const snowSpeed = 0.75;
+    const snowSpeed = settings.speed;
 
     // Minimum Flake Size
     // Recommended: 8
-    const snowMinSize = 5;
+    const snowMinSize = settings.size[0];
 
     // Maximum Flake Size
     // Recommended: 24
-    const snowMaxSize = 20;
+    const snowMaxSize = settings.size[1];
 
     // Refresh Rate (in milliseconds)
     // Recommended: 50
-    const snowRefresh = 15;
+    const snowRefresh = settings.refresh;
 
     // Additional Styles
     const snowStyles = "cursor: default; -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; -o-user-select: none; user-select: none;";
@@ -56,12 +65,12 @@ import { loadState } from '@nextcloud/initial-state'
     // How much the snowflakes should move to left and back to right.
     // Higher Value = More
     // Recommended: 15
-    const snowLeftRightMultiplicator = 10;
+    const snowLeftRightMultiplicator = settings.lrMultiplicator;
 
     // How fast the snowflakes should move to left and back to right.
     // Higher Value = Slower
     // Recommended: 10
-    const snowLeftRightSpeedDivider = 20;
+    const snowLeftRightSpeedDivider = settings.lrDivider;
 
     // The tolerance where the showflakes get despawned.
     // Recommended: 2

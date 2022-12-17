@@ -11,6 +11,7 @@ use OCP\AppFramework\Bootstrap\IBootstrap;
 use OCP\AppFramework\Bootstrap\IRegistrationContext;
 use OCP\AppFramework\Services\IInitialState;
 use OCP\IAppConfig;
+use OCP\IConfig;
 use OCP\Util;
 use Psr\Log\LoggerInterface;
 
@@ -30,12 +31,20 @@ class Application extends App implements IBootstrap {
 	public function boot(IBootContext $context): void {
 		/** @var IInitialState $state */
 		$state = $context->getAppContainer()->get(IInitialState::class);
-		$config = $context->getAppContainer()->get(IAppConfig::class);
-
-		$cfg = [
-			'a' => 123,
-			'b' => 'bar',
+		/** @var IConfig $config */
+		$config = $context->getAppContainer()->get(IConfig::class);
+		
+		$defaultSettings = [
+			'numFlakes' => 35,
+			'color' => ["#DDD", "#EEE"],
+			'speed' => 0.75,
+			'size' => [5, 20],
+			'refresh' => 15,
+			'lrMultiplicator' => 10,
+			'lrDivider' => 20,
 		];
+
+		$cfg = $config->getAppValue(self::APP_ID, 'settings', $defaultSettings);
 		$state->provideInitialState('settings', $cfg);
 		// $logger->error('Test Message');
 	}
