@@ -1,10 +1,16 @@
-/*!
-// Snow.js - v0.0.4
-// Version <=0.0.3 by kurisubrooks.com
-// Version 0.0.4 by pilzinsel64.de
-*/
-import { loadState } from '@nextcloud/initial-state'
+/**
+ * SPDX-FileCopyrightText: 2022 Christian Wolf <github@christianwolf.email>
+ * SPDX-License-Identifier: AGPL-3.0-or-later
+ */
 
+/* Snow.js - v0.0.4
+ * Originally published under MIT license
+ * Extracted from https://help.nextcloud.com/t/snowflake-effect-for-your-nextcloud-2022-nc24-nc25/151462
+ * Version <=0.0.3 by kurisubrooks.com
+ * Version 0.0.4 by pilzinsel64.de
+ */
+
+import { loadState } from '@nextcloud/initial-state'
 
 (function (){
     // const val = loadState('myapp', 'user_preference')
