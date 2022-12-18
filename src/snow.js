@@ -1,6 +1,8 @@
 /**
  * SPDX-FileCopyrightText: 2022 Christian Wolf <github@christianwolf.email>
- * SPDX-License-Identifier: AGPL-3.0-or-later
+ * SPDX-License-Identifier: AGPL-3.0-or-later OR MIT
+ * SPDX-FileContributor: pilzinsel64.de
+ * SPDX-FileContributor: kurisubrooks.com
  */
 
 /* Snow.js - v0.0.4
