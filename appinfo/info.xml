@@ -19,4 +19,8 @@
     <dependencies>
         <nextcloud min-version="23" max-version="25"/>
     </dependencies>
+    <settings>
+        <admin>OCA\SnowflakesTheme\Settings\AdminSettings</admin>
+        <!-- <admin-section>OCA\NotesTutorial\Sections\NotesAdmin</admin-section> -->
+    </settings>
 </info>
