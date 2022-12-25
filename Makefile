@@ -149,6 +149,7 @@ appstore:
 	--exclude="../$(app_name)/js/.*" \
 	--exclude="../$(app_name)/node_modules" \
 	--exclude="../$(app_name)/*.code-workspace" \
+	--exclude="../$(app_name)/.vscode" \
 	../$(app_name)
 
 .PHONY: test
