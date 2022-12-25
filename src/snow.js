@@ -99,7 +99,7 @@ import { loadState } from '@nextcloud/initial-state'
 
 	/**
 	 *
-	 * @param range
+	 * @param {number} range The (integer) number of possible entries in an array
 	 */
 	function randomise(range) {
 		return Math.floor(range * Math.random())
