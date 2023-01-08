@@ -6,12 +6,12 @@ const path = require('path')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 module.exports = webpackMerge.merge(webpackConfig, {
-    entry: {
-        snow: './snow.js',
-        admin: './admin.js'
-    },
-    context: path.join(__dirname, 'src'),
-    plugins: [
-        new CleanWebpackPlugin(),
-    ],
+	entry: {
+		snow: './snow.js',
+		admin: './admin.js',
+	},
+	context: path.join(__dirname, 'src'),
+	plugins: [
+		new CleanWebpackPlugin(),
+	],
 });
