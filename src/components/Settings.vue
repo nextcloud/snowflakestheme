@@ -2,7 +2,7 @@
 	<div class="section">
 		<NcSettingsSection :title="t('snowflakestheme', 'Snowflakes Theme configuration')">
 			<SnowflakesConfig :value="config"
-				@update:value="updateConfig"
+				@update:value="updateConfig($event, true)"
 				@update:color="updateColor($event, true)" />
 			{{ config }}
 		</NcSettingsSection>
@@ -11,9 +11,11 @@
 
 <script>
 
-import SnowflakesConfig from './SnowflakesConfig.vue'
-
 import NcSettingsSection from '@nextcloud/vue/dist/Components/NcSettingsSection'
+
+import SnowflakesConfig from './SnowflakesConfig.vue'
+import axios from '@nextcloud/axios'
+import {generateUrl} from '@nextcloud/router'
 
 export default {
 	name: 'Settings',
@@ -39,12 +41,20 @@ export default {
 			},
 		}
 	},
+	beforeMount() {
+		const url = generateUrl('/apps/snowflakestheme/globalSettings')
+		axios.get(url).then((rcv) => {
+			this.updateConfig(rcv.data, false)
+		})
+	},
 	methods: {
-		updateConfig(ev) {
+		updateConfig(ev, store) {
 			const oldColors = this.config.color
 			this.config = ev
 			this.updateColor(oldColors, false)
-			this.storeData()
+			if (store) {
+				this.storeData()
+			}
 		},
 		updateColor(colors, store) {
 			this.config.color.splice(0, Infinity, ...colors)
@@ -54,6 +64,11 @@ export default {
 		},
 		storeData() {
 			console.log('Storing of config data to backend')
+			const url = generateUrl('/apps/snowflakestheme/globalSettings')
+			const data = {
+				value: this.config,
+			}
+			axios.post(url, data)
 		},
 	},
 }

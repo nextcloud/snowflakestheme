@@ -60,6 +60,11 @@ export default {
 			return !this.valid
 		},
 	},
+	watch: {
+		value(val, oldVal) {
+			this.currentValue = String(val)
+		},
+	},
 	beforeMount() {
 		this.currentValue = String(this.value)
 	},

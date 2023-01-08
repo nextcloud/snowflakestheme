@@ -40,7 +40,8 @@ class Application extends App implements IBootstrap {
 			'lrDivider' => 20,
 		];
 
-		$cfg = $config->getAppValue(self::APP_ID, 'settings', $defaultSettings);
+		$cfgJson = $config->getAppValue(self::APP_ID, 'settings', $defaultSettings);
+		$cfg = json_decode($cfgJson, true);
 		$state->provideInitialState('settings', $cfg);
 	}
 }

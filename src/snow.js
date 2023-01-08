@@ -22,7 +22,10 @@ import { loadState } from '@nextcloud/initial-state'
 		numFlakes: 35,
 		color: ['#DDD', '#EEE'],
 		speed: 0.75,
-		size: [5, 20],
+		size: {
+			min: 5,
+			max: 20,
+		},
 		refresh: 15,
 		lrMultiplicator: 10,
 		lrDivider: 20,
@@ -46,11 +49,11 @@ import { loadState } from '@nextcloud/initial-state'
 
 	// Minimum Flake Size
 	// Recommended: 8
-	const snowMinSize = settings.size[0]
+	const snowMinSize = settings.size.min
 
 	// Maximum Flake Size
 	// Recommended: 24
-	const snowMaxSize = settings.size[1]
+	const snowMaxSize = settings.size.max
 
 	// Refresh Rate (in milliseconds)
 	// Recommended: 50

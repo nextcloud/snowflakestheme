@@ -11,11 +11,6 @@ import Settings from './components/Settings.vue'
 // eslint-disable-next-line
 __webpack_public_path__ = generateFilePath(appName, '', 'js/')
 
-// if (__webpack_use_dev_server__ || false) {
-// 	// eslint-disable-next-line camelcase,no-undef
-// 	__webpack_public_path__ = "http://127.0.0.1:3000/apps/cookbook/js/"
-// }
-
 Vue.mixin({ methods: { t, n } })
 
 export default new Vue({
