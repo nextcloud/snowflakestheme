@@ -11,11 +11,11 @@
 
 <script>
 
-import NcSettingsSection from '@nextcloud/vue/dist/Components/NcSettingsSection'
+import NcSettingsSection from '@nextcloud/vue/dist/Components/NcSettingsSection.js'
 
 import SnowflakesConfig from './SnowflakesConfig.vue'
 import axios from '@nextcloud/axios'
-import {generateUrl} from '@nextcloud/router'
+import { generateUrl } from '@nextcloud/router'
 
 export default {
 	name: 'Settings',
@@ -65,7 +65,6 @@ export default {
 			}
 		},
 		storeData() {
-			console.log('Storing of config data to backend')
 			const url = generateUrl('/apps/snowflakestheme/globalSettings')
 			const data = {
 				value: this.config,
