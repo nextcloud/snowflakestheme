@@ -1,10 +1,16 @@
 <template>
 	<div class="section">
 		<NcSettingsSection :title="t('snowflakestheme', 'Snowflakes Theme configuration')">
-			<SnowflakesConfig :value="config"
-				@update:value="updateConfig($event, true)"
-				@update:color="updateColor($event, true)" />
-			{{ config }}
+			<div class="all-config">
+				<SnowflakesConfig :value="config"
+					:style="{ opacity: showLoading ? 0.25 : 1 }"
+					@update:value="updateConfig($event, true)"
+					@update:color="updateColor($event, true)" />
+				<div v-if="showLoading"
+					class="overlay">
+					<NcLoadingIcon :size="100" />
+				</div>
+			</div>
 		</NcSettingsSection>
 	</div>
 </template>
@@ -12,15 +18,18 @@
 <script>
 
 import NcSettingsSection from '@nextcloud/vue/dist/Components/NcSettingsSection.js'
+import NcLoadingIcon from '@nextcloud/vue/dist/Components/NcLoadingIcon.js'
 
-import SnowflakesConfig from './SnowflakesConfig.vue'
 import axios from '@nextcloud/axios'
 import { generateUrl } from '@nextcloud/router'
+
+import SnowflakesConfig from './SnowflakesConfig.vue'
 
 export default {
 	name: 'Settings',
 	components: {
 		NcSettingsSection,
+		NcLoadingIcon,
 		SnowflakesConfig,
 	},
 	data() {
@@ -39,14 +48,17 @@ export default {
 				lrMultiplicator: 10,
 				lrDivider: 20,
 			},
+			showLoading: true,
 		}
 	},
 	beforeMount() {
+		this.showLoading = true
 		const url = generateUrl('/apps/snowflakestheme/globalSettings')
 		axios.get(url).then((rcv) => {
 			const oldColor = [...rcv.data.color]
 			this.updateConfig(rcv.data, false)
 			this.updateColor(oldColor, false)
+			this.showLoading = false
 		})
 	},
 	methods: {
@@ -75,5 +87,18 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped>
+<style lang="scss" scoped>
+.all-config {
+	position: relative;
+
+	.overlay {
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		top: 0;
+		left: 0;
+		display: flex;
+		justify-content: center;
+	}
+}
 </style>
