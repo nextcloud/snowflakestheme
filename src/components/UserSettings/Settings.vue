@@ -48,7 +48,6 @@ export default {
 		this.showLoading = true
 		const url = generateUrl('/apps/snowflakestheme/userSettings')
 		axios.get(url).then((rcv) => {
-			console.log(rcv.data)
 			this.updateConfig(rcv.data, false)
 			this.showLoading = false
 		})
