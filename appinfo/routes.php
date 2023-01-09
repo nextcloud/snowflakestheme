@@ -21,4 +21,16 @@ return [
 	// 	['name' => 'note_api#preflighted_cors', 'url' => '/api/0.1/{path}',
 	// 		'verb' => 'OPTIONS', 'requirements' => ['path' => '.+']]
 	// ]
+	'routes' => [
+		[
+			'name' => 'settings#getAppConfig',
+			'url' => '/globalSettings',
+			'verb' => 'GET'
+		],
+		[
+			'name' => 'settings#setAppConfig',
+			'url' => '/globalSettings',
+			'verb' => 'POST'
+		],
+	],
 ];
