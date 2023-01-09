@@ -32,5 +32,15 @@ return [
 			'url' => '/globalSettings',
 			'verb' => 'POST'
 		],
+		[
+			'name' => 'settings#getUserConfig',
+			'url' => '/userSettings',
+			'verb' => 'GET'
+		],
+		[
+			'name' => 'settings#setUserConfig',
+			'url' => '/userSettings',
+			'verb' => 'POST'
+		],
 	],
 ];

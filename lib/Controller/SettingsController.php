@@ -16,10 +16,13 @@ class SettingsController extends Controller {
 
     /** @var IConfig */
     private $config;
+    /** @var ?string */
+    private $userId;
 
-    public function __construct(IConfig $config, IRequest $request) {
+    public function __construct(IConfig $config, IRequest $request, ?string $userId) {
         $this->config = $config;
         $this->request = $request;
+        $this->userId = $userId;
     }
 
     public function getAppConfig(): JSONResponse {
@@ -48,6 +51,31 @@ class SettingsController extends Controller {
             return new JSONResponse('Invalid request structure.', Http::STATUS_BAD_REQUEST);
         } else {
             $this->config->setAppValue(Application::APP_ID, 'settings', json_encode($value));
+            return new JSONResponse('OK', Http::STATUS_NO_CONTENT);
+        }
+    }
+
+    /**
+     * @NoAdminRequired
+     */
+    public function getUserConfig(): JSONResponse {
+        $default = [
+            'disabledForUser' => false,
+        ];
+        $defaultJson = json_encode($default);
+        $settings = $this->config->getUserValue($this->userId, Application::APP_ID, 'config', $defaultJson);
+        return new JSONResponse(json_decode($settings, true));
+    }
+
+    /**
+     * @NoAdminRequired
+     */
+    public function setUserConfig(): JSONResponse {
+        $value = $this->request->getParam('value', null);
+        if($value === null) {
+            return new JSONResponse('Invalid structure', Http::STATUS_BAD_REQUEST);
+        } else {
+            $this->config->setUserValue($this->userId, Application::APP_ID, 'config', json_encode($value));
             return new JSONResponse('OK', Http::STATUS_NO_CONTENT);
         }
     }

@@ -9,6 +9,7 @@ module.exports = webpackMerge.merge(webpackConfig, {
 	entry: {
 		snow: './snow.js',
 		admin: './admin.js',
+		config: './config.js',
 	},
 	context: path.join(__dirname, 'src'),
 	plugins: [
