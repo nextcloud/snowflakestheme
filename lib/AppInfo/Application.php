@@ -18,7 +18,6 @@ class Application extends App implements IBootstrap {
 
 	public function __construct() {
 		parent::__construct(self::APP_ID);
-		Util::addScript(self::APP_ID, 'snowflakestheme-snow');
 	}
 
 	public function register(IRegistrationContext $context): void
@@ -29,19 +28,32 @@ class Application extends App implements IBootstrap {
 		$state = $context->getAppContainer()->get(IInitialState::class);
 		/** @var IConfig $config */
 		$config = $context->getAppContainer()->get(IConfig::class);
+		/** @var ?string $userId */
+		$userId = $context->getAppContainer()->get('userId');
 		
 		$defaultSettings = [
+			'enabled' => true,
+			'enabledPublicly' => true,
 			'numFlakes' => 35,
 			'color' => ["#DDD", "#EEE"],
 			'speed' => 0.75,
-			'size' => [5, 20],
+			'size' => [
+				'min' => 5,
+				'max' => 20
+			],
 			'refresh' => 15,
 			'lrMultiplicator' => 10,
 			'lrDivider' => 20,
 		];
 
-		$cfgJson = $config->getAppValue(self::APP_ID, 'settings', $defaultSettings);
+		$cfgJson = $config->getAppValue(self::APP_ID, 'settings', json_encode($defaultSettings));
 		$cfg = json_decode($cfgJson, true);
-		$state->provideInitialState('settings', $cfg);
+
+		$userLoggedIn = ($userId !== null);
+
+		if ($cfg['enabled'] && ($userLoggedIn || $cfg['enabledPublicly'])) {
+			$state->provideInitialState('settings', $cfg);
+			Util::addScript(self::APP_ID, 'snowflakestheme-snow');
+		}
 	}
 }
