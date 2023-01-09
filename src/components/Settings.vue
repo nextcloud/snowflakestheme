@@ -44,7 +44,9 @@ export default {
 	beforeMount() {
 		const url = generateUrl('/apps/snowflakestheme/globalSettings')
 		axios.get(url).then((rcv) => {
+			const oldColor = [...rcv.data.color]
 			this.updateConfig(rcv.data, false)
+			this.updateColor(oldColor, false)
 		})
 	},
 	methods: {
