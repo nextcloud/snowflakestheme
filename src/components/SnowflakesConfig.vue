@@ -241,6 +241,7 @@ export default {
 		}
 	}
 }
+
 .color-row {
 	display: flex;
 	align-items: center;
