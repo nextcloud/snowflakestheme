@@ -9,15 +9,16 @@
     <name>Snowflakes Theme</name>
     <summary>A simple app to show some snowflakes in the nextcloud web interface</summary>
     <description><![CDATA[This app just adds an overlay over all nextcloud pages to show a snowing effect.]]></description>
-    <version>0.0.2</version>
+    <version>1.0.0</version>
     <licence>agpl</licence>
     <author mail="github@christianwolf.email" >Christian Wolf</author>
     <namespace>SnowflakesTheme</namespace>
     <category>customization</category>
     <website>https://github.com/christianlupus-nextcloud/snowflakestheme</website>
     <bugs>https://github.com/christianlupus-nextcloud/snowflakestheme/issues</bugs>
+    <screenshot>https://raw.githubusercontent.com/christianlupus-nextcloud/snowflakestheme/main/img/Screencast.gif</screenshot>
     <dependencies>
-        <nextcloud min-version="23" max-version="26"/>
+        <nextcloud min-version="25" max-version="26"/>
     </dependencies>
     <settings>
         <admin>OCA\SnowflakesTheme\Settings\AdminSettings</admin>
