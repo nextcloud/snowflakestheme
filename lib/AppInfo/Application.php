@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 // SPDX-FileCopyrightText: Christian Wolf <github@christianwolf.email>
 // SPDX-License-Identifier: AGPL-3.0-or-later
@@ -20,8 +21,8 @@ class Application extends App implements IBootstrap {
 		parent::__construct(self::APP_ID);
 	}
 
-	public function register(IRegistrationContext $context): void
-	{}
+	public function register(IRegistrationContext $context): void {
+	}
 
 	public function boot(IBootContext $context): void {
 		/** @var IInitialState $state */
@@ -52,8 +53,24 @@ class Application extends App implements IBootstrap {
 		$userLoggedIn = ($userId !== null);
 
 		if ($cfg['enabled'] && ($userLoggedIn || $cfg['enabledPublicly'])) {
-			$state->provideInitialState('settings', $cfg);
-			Util::addScript(self::APP_ID, 'snowflakestheme-snow');
+			if ($userLoggedIn) {
+				$defaultUser = [
+					'disabledForUser' => false,
+				];
+				$userCfgJson = $config->getUserValue($userId, Application::APP_ID, 'config', json_encode($defaultUser));
+				$userCfg = json_decode($userCfgJson, true);
+
+				if (! $userCfg['disabledForUser']) {
+					$this->addScriptToHeader($state, $cfg);
+				}
+			} elseif ($cfg['enabledPublicly']) {
+				$this->addScriptToHeader($state, $cfg);
+			}
 		}
+	}
+	
+	private function addScriptToHeader(IInitialState $state, array $cfg) {
+		$state->provideInitialState('settings', $cfg);
+		Util::addScript(self::APP_ID, 'snowflakestheme-snow');
 	}
 }

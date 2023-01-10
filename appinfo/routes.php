@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 // SPDX-FileCopyrightText: Christian Wolf <github@christianwolf.email>
 // SPDX-License-Identifier: AGPL-3.0-or-later
@@ -30,6 +31,16 @@ return [
 		[
 			'name' => 'settings#setAppConfig',
 			'url' => '/globalSettings',
+			'verb' => 'POST'
+		],
+		[
+			'name' => 'settings#getUserConfig',
+			'url' => '/userSettings',
+			'verb' => 'GET'
+		],
+		[
+			'name' => 'settings#setUserConfig',
+			'url' => '/userSettings',
 			'verb' => 'POST'
 		],
 	],

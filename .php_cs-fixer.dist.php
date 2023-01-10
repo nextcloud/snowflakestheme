@@ -15,6 +15,9 @@ $config
 	->notPath('build')
 	->notPath('l10n')
 	->notPath('src')
+	->notPath('node_modules')
 	->notPath('vendor')
+	->notPath('.github')
 	->in(__DIR__);
+
 return $config;

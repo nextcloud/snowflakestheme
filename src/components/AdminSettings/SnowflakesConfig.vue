@@ -118,7 +118,7 @@ import NcButton from '@nextcloud/vue/dist/Components/NcButton.js'
 import PlusIcon from 'vue-material-design-icons/Plus.vue'
 import DeleteIcon from 'vue-material-design-icons/Delete.vue'
 
-import NumericInput from './NumericInput.vue'
+import NumericInput from '../NumericInput.vue'
 
 export default {
 	name: 'SnowflakesConfig',

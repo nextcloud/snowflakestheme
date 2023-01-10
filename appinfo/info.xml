@@ -21,6 +21,7 @@
     </dependencies>
     <settings>
         <admin>OCA\SnowflakesTheme\Settings\AdminSettings</admin>
+        <personal>OCA\SnowflakesTheme\Settings\UserSettings</personal>
         <!-- <admin-section>OCA\NotesTutorial\Sections\NotesAdmin</admin-section> -->
     </settings>
 </info>

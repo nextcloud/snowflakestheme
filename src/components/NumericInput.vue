@@ -12,6 +12,7 @@ SPDX-License-Identifier: AGPL-3.0-or-later
 
 <script>
 import NcTextField from '@nextcloud/vue/dist/Components/NcTextField.js'
+
 export default {
 	name: 'NumericInput',
 	components: {

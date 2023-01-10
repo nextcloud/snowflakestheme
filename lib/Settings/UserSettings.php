@@ -11,7 +11,7 @@ use OCP\Settings\ISettings;
 use OCP\Util;
 use Psr\Log\LoggerInterface;
 
-class AdminSettings implements ISettings {
+class UserSettings implements ISettings {
 	/** @var string */
 	private $appId;
 
@@ -21,7 +21,7 @@ class AdminSettings implements ISettings {
 
 	public function getForm() {
 		$params = [];
-		Util::addScript($this->appId, 'snowflakestheme-admin');
+		Util::addScript($this->appId, 'snowflakestheme-config');
 		return new TemplateResponse($this->appId, 'admin', $params);
 	}
 
