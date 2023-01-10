@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 // SPDX-FileCopyrightText: Christian Wolf <github@christianwolf.email>
 // SPDX-License-Identifier: AGPL-3.0-or-later
@@ -11,27 +12,25 @@ use OCP\Util;
 use Psr\Log\LoggerInterface;
 
 class UserSettings implements ISettings {
+	/** @var string */
+	private $appId;
 
-    /** @var string */
-    private $appId;
+	public function __construct($appName, LoggerInterface $logger) {
+		$this->appId = $appName;
+	}
 
-    public function __construct($appName, LoggerInterface $logger) {
-        $this->appId = $appName;
-    }
+	public function getForm() {
+		$params = [];
+		Util::addScript($this->appId, 'snowflakestheme-config');
+		return new TemplateResponse($this->appId, 'admin', $params);
+	}
 
-    public function getForm() {
-        $params = [];
-        Util::addScript($this->appId, 'snowflakestheme-config');
-        return new TemplateResponse($this->appId, 'admin', $params);
-    }
+	public function getSection() {
+		// return 'overview';
+		return 'additional';
+	}
 
-    public function getSection() {
-        // return 'overview';
-        return 'additional';
-    }
-
-    public function getPriority() {
-        return 100;
-    }
-
+	public function getPriority() {
+		return 100;
+	}
 }

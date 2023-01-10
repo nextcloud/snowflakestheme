@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 // SPDX-FileCopyrightText: Christian Wolf <github@christianwolf.email>
 // SPDX-License-Identifier: AGPL-3.0-or-later
@@ -20,8 +21,8 @@ class Application extends App implements IBootstrap {
 		parent::__construct(self::APP_ID);
 	}
 
-	public function register(IRegistrationContext $context): void
-	{}
+	public function register(IRegistrationContext $context): void {
+	}
 
 	public function boot(IBootContext $context): void {
 		/** @var IInitialState $state */
@@ -62,7 +63,7 @@ class Application extends App implements IBootstrap {
 				if (! $userCfg['disabledForUser']) {
 					$this->addScriptToHeader($state, $cfg);
 				}
-			} else if($cfg['enabledPublicly']) {
+			} elseif ($cfg['enabledPublicly']) {
 				$this->addScriptToHeader($state, $cfg);
 			}
 		}
