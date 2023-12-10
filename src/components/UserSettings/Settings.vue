@@ -4,7 +4,7 @@ SPDX-License-Identifier: AGPL-3.0-or-later
 -->
 <template>
 	<div class="section">
-		<NcSettingsSection :title="t('snowflakestheme', 'Snowflakes Theme configuration')">
+		<NcSettingsSection :name="t('snowflakestheme', 'Snowflakes Theme configuration')">
 			<div class="all-config">
 				<SnowflakesConfig :value="config"
 					:style="{ opacity: showLoading ? 0.25 : 1 }"
