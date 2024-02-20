@@ -42,7 +42,7 @@
     "@nextcloud/babel-config": "^1.0.0",
     "@nextcloud/browserslist-config": "^3.0.0",
     "@nextcloud/eslint-config": "^8.0.0",
-    "@nextcloud/stylelint-config": "^2.1.2",
+    "@nextcloud/stylelint-config": "^2.4.0",
     "@nextcloud/webpack-vue-config": "^6.0.0",
     "clean-webpack-plugin": "^4.0.0",
     "webpack-cli": "^5.1.4",
