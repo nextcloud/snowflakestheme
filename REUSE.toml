@@ -3,7 +3,7 @@
 version = 1
 SPDX-PackageName = "Snowflakes Theme"
 SPDX-PackageSupplier = "Christian Wolf <github@christianwolf.email>"
-SPDX-PackageDownloadLocation = "https://github.com/nextcloud/profiler"
+SPDX-PackageDownloadLocation = "https://github.com/nextcloud/snowflakestheme"
 
 [[annotations]]
 path = ["package-lock.json", "package.json", "composer.json", "composer.lock"]
