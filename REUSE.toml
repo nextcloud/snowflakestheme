@@ -1,0 +1,24 @@
+# SPDX-FileCopyrightText: 2024 Christian Wolf <github@christianwolf.email>
+# SPDX-License-Identifier: AGPL-3.0-or-later
+version = 1
+SPDX-PackageName = "Snowflakes Theme"
+SPDX-PackageSupplier = "Christian Wolf <github@christianwolf.email>"
+SPDX-PackageDownloadLocation = "https://github.com/nextcloud/snowflakestheme"
+
+[[annotations]]
+path = ["package-lock.json", "package.json", "composer.json", "composer.lock"]
+precedence = "aggregate"
+SPDX-FileCopyrightText = "Christian Wolf <github@christianwolf.email>"
+SPDX-License-Identifier = "AGPL-3.0-or-later"
+
+[[annotations]]
+path = ["l10n/**.js", "l10n/**.json"]
+precedence = "aggregate"
+SPDX-FileCopyrightText = "Nextcloud translators <https://www.transifex.com/nextcloud/>"
+SPDX-License-Identifier = "AGPL-3.0-or-later"
+
+[[annotations]]
+path = "CHANGELOG.md"
+precedence = "aggregate"
+SPDX-FileCopyrightText = "Christian Wolf <github@christianwolf.email>"
+SPDX-License-Identifier = "CC0-1.0"

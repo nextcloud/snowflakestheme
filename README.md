@@ -1,9 +1,10 @@
 <!--
-SPDX-FileCopyrightText: Christian Wolf <github@christianwolf.email>
-SPDX-License-Identifier: CC0-1.0
+  - SPDX-FileCopyrightText: Christian Wolf <github@christianwolf.email>
+  - SPDX-License-Identifier: CC0-1.0
 -->
-
 # Snowflakes Theme
+
+[![REUSE status](https://api.reuse.software/badge/github.com/nextcloud/snowflakestheme)](https://api.reuse.software/info/github.com/nextcloud/snowflakestheme)
 
 This app adds some snowflakes to the web UI of your Nextcloud server.
 
