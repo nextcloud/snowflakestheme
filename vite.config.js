@@ -1,3 +1,6 @@
+// SPDX-FileCopyrightText: Christian Wolf <github@christianwolf.email>
+// SPDX-License-Identifier: AGPL-3.0-or-later
+
 import { createAppConfig } from '@nextcloud/vite-config'
 import { join, resolve } from 'path'
 import cleanPlugin from 'vite-plugin-clean'
@@ -15,15 +18,6 @@ export default createAppConfig(
             plugins: [
                 cleanPlugin,
             ],
-		// 	resolve: {
-		// 		alias: {
-		// 			cookbook: resolve(__dirname, 'src'),
-		// 			icons: resolve(
-		// 				__dirname,
-		// 				'node_modules/vue-material-design-icons'
-		// 			),
-		// 		},
-		// 	},
 		},
 	}
 )
