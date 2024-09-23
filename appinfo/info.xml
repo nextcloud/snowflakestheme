@@ -18,7 +18,7 @@
     <bugs>https://github.com/christianlupus-nextcloud/snowflakestheme/issues</bugs>
     <screenshot>https://raw.githubusercontent.com/christianlupus-nextcloud/snowflakestheme/main/img/Screencast.gif</screenshot>
     <dependencies>
-        <nextcloud min-version="25" max-version="29"/>
+        <nextcloud min-version="25" max-version="31"/>
     </dependencies>
     <settings>
         <admin>OCA\SnowflakesTheme\Settings\AdminSettings</admin>
