@@ -12,8 +12,8 @@
   "type": "module",
   "scripts": {
     "build": "vite build",
-    "dev": "vite --mode development build",
-    "watch": "vite --mode development build --watch",
+    "dev": "NODE_ENV=development vite --mode development build",
+    "watch": "NODE_ENV=development vite --mode development build --watch",
     "lint": "eslint --ext .js,.vue src",
     "lint:fix": "eslint --ext .js,.vue src --fix",
     "stylelint": "stylelint css/*.css css/*.scss src/**/*.scss src/**/*.vue",
