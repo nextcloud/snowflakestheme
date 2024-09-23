@@ -24,30 +24,17 @@ SPDX-License-Identifier: AGPL-3.0-or-later
 				:max="100"
 				@update:value="setNumFlakes" />
 			<template v-for="(col, idx) in value.color">
-				<div :key="'label' + idx" class="label">
+				<div class="label" :key="'label' + idx">
 					{{ t('snowflakestheme', 'Color number {number}', {number: idx}) }}
 				</div>
-				<div :key="'colorPicker' + idx"
+				<div  :key="'picker' + idx"
 					class="color-picker">
-					<NcColorPicker :value="value.color[idx]"
+					<ColorSelector :value="col" 
 						:palette="colorPalette"
-						:advanced-fields="true"
-						@update:value="setColor(idx, $event)">
-						<div class="color-row">
-							<div class="color-preview"
-								:style="{ 'background-color': col }" />
-							<NcButton>{{ t('snowflakestheme', 'Change color') }}</NcButton>
-						</div>
-					</NcColorPicker>
-					<NcButton class="color-removal"
-						type="tertiary"
-						:disabled="value.color.length <= 1"
-						@click="removeColor(idx)">
-						{{ t('snowflakestheme', 'Drop color') }}
-						<template #icon>
-							<DeleteIcon :size="25" />
-						</template>
-					</NcButton>
+						:numColors="value.color.length"
+						@drop-color="removeColor(idx)"
+						@value:update="setColor(idx, $event)"
+					 />
 					<div class="spacer" />
 				</div>
 			</template>
@@ -115,6 +102,8 @@ import NcCheckboxRadioSwitch from '@nextcloud/vue/dist/Components/NcCheckboxRadi
 import NcColorPicker from '@nextcloud/vue/dist/Components/NcColorPicker.js'
 import NcButton from '@nextcloud/vue/dist/Components/NcButton.js'
 
+import ColorSelector from './ColorSelector.vue'
+
 import PlusIcon from 'vue-material-design-icons/Plus.vue'
 import DeleteIcon from 'vue-material-design-icons/Delete.vue'
 
@@ -129,6 +118,7 @@ export default {
 		PlusIcon,
 		DeleteIcon,
 		NumericInput,
+		ColorSelector,
 	},
 	props: {
 		value: {
@@ -141,12 +131,12 @@ export default {
 	data() {
 		return {
 			colorPalette: [
-				'#FFF',
-				'#EEE',
-				'#DDD',
-				'#CCC',
-				'#BBB',
-				'#AAA',
+				'#FFFFFF',
+				'#EEEEEE',
+				'#DDDDDD',
+				'#CCCCCC',
+				'#BBBBBB',
+				'#AAAAAA',
 			],
 		}
 	},
