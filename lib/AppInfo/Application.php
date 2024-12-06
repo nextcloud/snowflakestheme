@@ -36,7 +36,7 @@ class Application extends App implements IBootstrap {
 			'enabled' => true,
 			'enabledPublicly' => true,
 			'numFlakes' => 35,
-			'color' => ["#DDD", "#EEE"],
+			'color' => ['#DDD', '#EEE'],
 			'speed' => 0.75,
 			'size' => [
 				'min' => 5,
