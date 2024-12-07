@@ -6,7 +6,7 @@ SPDX-PackageSupplier = "Christian Wolf <github@christianwolf.email>"
 SPDX-PackageDownloadLocation = "https://github.com/nextcloud/snowflakestheme"
 
 [[annotations]]
-path = ["package-lock.json", "package.json", "composer.json", "composer.lock"]
+path = ["package-lock.json", "package.json", "composer.json", "composer.lock", ".prettierignore", ".prettierrc.json"]
 precedence = "aggregate"
 SPDX-FileCopyrightText = "Christian Wolf <github@christianwolf.email>"
 SPDX-License-Identifier = "AGPL-3.0-or-later"
