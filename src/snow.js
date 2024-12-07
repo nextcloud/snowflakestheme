@@ -13,7 +13,6 @@
  */
 
 import { loadState } from '@nextcloud/initial-state'
-
 ;(function () {
 	// const val = loadState('myapp', 'user_preference')
 

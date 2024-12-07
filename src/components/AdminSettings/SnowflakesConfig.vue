@@ -236,12 +236,10 @@ export default {
 		grid-template-columns: 1fr 3fr;
 		row-gap: 5px;
 	}
-
 }
 
 .color-row {
 	display: flex;
 	align-items: center;
 }
-
 </style>
