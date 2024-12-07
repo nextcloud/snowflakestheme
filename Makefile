@@ -147,10 +147,19 @@ appstore:
 	--exclude="../$(app_name)/protractor\.*" \
 	--exclude="../$(app_name)/.*" \
 	--exclude="../$(app_name)/js/.*" \
+	--exclude="../$(app_name)/src" \
 	--exclude="../$(app_name)/node_modules" \
 	--exclude="../$(app_name)/*.code-workspace" \
 	--exclude="../$(app_name)/.vscode" \
+	--exclude="../$(app_name)/psalm.xml" \
 	../$(app_name)
+
+.PHONY: prepare-deploy
+prepare-deploy:
+	composer install --no-dev
+	npm run build
+	$(MAKE) appstore
+	./.github/create-signature.sh
 
 .PHONY: test
 test: composer
