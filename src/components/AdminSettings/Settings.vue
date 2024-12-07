@@ -4,14 +4,15 @@ SPDX-License-Identifier: AGPL-3.0-or-later
 -->
 <template>
 	<div class="section">
-		<NcSettingsSection :name="t('snowflakestheme', 'Snowflakes Theme configuration')">
+		<NcSettingsSection
+			:name="t('snowflakestheme', 'Snowflakes Theme configuration')">
 			<div class="all-config">
-				<SnowflakesConfig :value="config"
+				<SnowflakesConfig
+					:value="config"
 					:style="{ opacity: showLoading ? 0.25 : 1 }"
 					@update:value="updateConfig($event, true)"
 					@update:color="updateColor($event, true)" />
-				<div v-if="showLoading"
-					class="overlay">
+				<div v-if="showLoading" class="overlay">
 					<NcLoadingIcon :size="100" />
 				</div>
 			</div>
@@ -20,7 +21,6 @@ SPDX-License-Identifier: AGPL-3.0-or-later
 </template>
 
 <script>
-
 import NcSettingsSection from '@nextcloud/vue/dist/Components/NcSettingsSection.js'
 import NcLoadingIcon from '@nextcloud/vue/dist/Components/NcLoadingIcon.js'
 

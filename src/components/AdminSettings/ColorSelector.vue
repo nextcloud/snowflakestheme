@@ -1,25 +1,26 @@
 <template>
-    <div class="color-picker">
-        <NcColorPicker :value="value"
-						:palette="palette"
-						:advanced-fields="false"
-						@update:value="$emit('value:update', $event)">
-						<div class="color-row">	
-							<div class="color-preview"
-								:style="{ 'background-color': value }" />
-							<NcButton>{{ t('snowflakestheme', 'Change color') }}</NcButton>
-						</div>
-					</NcColorPicker>
-					<NcButton class	="color-removal"
-							type="tertiary"
-						:disabled="numColors <= 1"
-						@click="$emit('drop-color')">
-						{{ t('snowflakestheme', 'Drop color') }}
-						<template #icon>
-							<DeleteIcon :size="25" />
-						</template>
-					</NcButton>
-    </div>
+	<div class="color-picker">
+		<NcColorPicker
+			:value="value"
+			:palette="palette"
+			:advanced-fields="false"
+			@update:value="$emit('value:update', $event)">
+			<div class="color-row">
+				<div class="color-preview" :style="{ 'background-color': value }" />
+				<NcButton>{{ t('snowflakestheme', 'Change color') }}</NcButton>
+			</div>
+		</NcColorPicker>
+		<NcButton
+			class="color-removal"
+			type="tertiary"
+			:disabled="numColors <= 1"
+			@click="$emit('drop-color')">
+			{{ t('snowflakestheme', 'Drop color') }}
+			<template #icon>
+				<DeleteIcon :size="25" />
+			</template>
+		</NcButton>
+	</div>
 </template>
 
 <script>
@@ -28,24 +29,16 @@ import NcButton from '@nextcloud/vue/dist/Components/NcButton.js'
 import DeleteIcon from 'vue-material-design-icons/Delete.vue'
 
 export default {
-    name: 'ColorSelector',
-    props: [
-        'value',
-        'palette',
-        'numColors',
-    ],
-    emits: [
-        'value:update',
-        'drop-color'
-    ],
-    components: {
-        NcButton,
-        NcColorPicker,
-        DeleteIcon
-    },
+	name: 'ColorSelector',
+	props: ['value', 'palette', 'numColors'],
+	emits: ['value:update', 'drop-color'],
+	components: {
+		NcButton,
+		NcColorPicker,
+		DeleteIcon,
+	},
 }
 </script>
-
 
 <style lang="scss" scoped>
 .color-preview {
@@ -57,13 +50,13 @@ export default {
 	margin: 5px;
 }
 
-	.color-picker {
-		display: flex;
+.color-picker {
+	display: flex;
 
-		.color-removal {
-			margin: 0px 5px;
-		}
+	.color-removal {
+		margin: 0px 5px;
 	}
+}
 
 .color-row {
 	display: flex;

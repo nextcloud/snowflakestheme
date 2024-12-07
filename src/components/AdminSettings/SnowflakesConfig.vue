@@ -4,12 +4,14 @@ SPDX-License-Identifier: AGPL-3.0-or-later
 -->
 <template>
 	<div>
-		<NcCheckboxRadioSwitch :checked="value.enabled"
+		<NcCheckboxRadioSwitch
+			:checked="value.enabled"
 			:type="'switch'"
 			@update:checked="toggleEnable">
 			{{ t('snowflakestheme', 'Enable the snowflakes globally') }}
 		</NcCheckboxRadioSwitch>
-		<NcCheckboxRadioSwitch :checked="value.enabledPublicly"
+		<NcCheckboxRadioSwitch
+			:checked="value.enabledPublicly"
 			:type="'switch'"
 			@update:checked="toggleEnablePublicly">
 			{{ t('snowflakestheme', 'Enable the snowflakes on public pages') }}
@@ -18,23 +20,27 @@ SPDX-License-Identifier: AGPL-3.0-or-later
 			<div class="label">
 				{{ t('snowflakestheme', 'Number of flakes') }}
 			</div>
-			<NumericInput :value="value.numFlakes"
+			<NumericInput
+				:value="value.numFlakes"
 				:float="false"
 				:min="5"
 				:max="100"
 				@update:value="setNumFlakes" />
 			<template v-for="(col, idx) in value.color">
 				<div class="label" :key="'label' + idx">
-					{{ t('snowflakestheme', 'Color number {number}', {number: idx}) }}
+					{{
+						t('snowflakestheme', 'Color number {number}', {
+							number: idx,
+						})
+					}}
 				</div>
-				<div  :key="'picker' + idx"
-					class="color-picker">
-					<ColorSelector :value="col" 
+				<div :key="'picker' + idx" class="color-picker">
+					<ColorSelector
+						:value="col"
 						:palette="colorPalette"
 						:numColors="value.color.length"
 						@drop-color="removeColor(idx)"
-						@value:update="setColor(idx, $event)"
-					 />
+						@value:update="setColor(idx, $event)" />
 					<div class="spacer" />
 				</div>
 			</template>
@@ -48,7 +54,8 @@ SPDX-License-Identifier: AGPL-3.0-or-later
 			<div class="label">
 				{{ t('snowflakestheme', 'Speed of flakes') }}
 			</div>
-			<NumericInput :value="value.speed"
+			<NumericInput
+				:value="value.speed"
 				:float="true"
 				:min="0.1"
 				:max="5"
@@ -56,7 +63,8 @@ SPDX-License-Identifier: AGPL-3.0-or-later
 			<div class="label">
 				{{ t('snowflakestheme', 'Minimum size') }}
 			</div>
-			<NumericInput :value="value.size.min"
+			<NumericInput
+				:value="value.size.min"
 				:float="false"
 				:min="1"
 				:max="value.size.max"
@@ -64,7 +72,8 @@ SPDX-License-Identifier: AGPL-3.0-or-later
 			<div class="label">
 				{{ t('snowflakestheme', 'Maximum size') }}
 			</div>
-			<NumericInput :value="value.size.max"
+			<NumericInput
+				:value="value.size.max"
 				:float="false"
 				:min="value.size.min"
 				:max="150"
@@ -72,7 +81,8 @@ SPDX-License-Identifier: AGPL-3.0-or-later
 			<div class="label">
 				{{ t('snowflakestheme', 'Refresh interval') }}
 			</div>
-			<NumericInput :value="value.refresh"
+			<NumericInput
+				:value="value.refresh"
 				:float="false"
 				:min="5"
 				:max="50"
@@ -80,7 +90,8 @@ SPDX-License-Identifier: AGPL-3.0-or-later
 			<div class="label">
 				{{ t('snowflakestheme', 'Amount of left/right movement') }}
 			</div>
-			<NumericInput :value="value.lrMultiplicator"
+			<NumericInput
+				:value="value.lrMultiplicator"
 				:float="false"
 				:min="5"
 				:max="100"
@@ -88,7 +99,8 @@ SPDX-License-Identifier: AGPL-3.0-or-later
 			<div class="label">
 				{{ t('snowflakestheme', 'Speed of left/right movement') }}
 			</div>
-			<NumericInput :value="value.lrDivider"
+			<NumericInput
+				:value="value.lrDivider"
 				:float="false"
 				:min="5"
 				:max="100"
@@ -218,7 +230,7 @@ export default {
 .settings {
 	.label {
 		display: flex;
-		margin: 8px 0px 0px
+		margin: 8px 0px 0px;
 	}
 
 	@media screen and (min-width: 1000px) {
