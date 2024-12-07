@@ -27,7 +27,7 @@ SPDX-License-Identifier: AGPL-3.0-or-later
 				:max="100"
 				@update:value="setNumFlakes" />
 			<template v-for="(col, idx) in value.color">
-				<div class="label" :key="'label' + idx">
+				<div :key="'label' + idx" class="label">
 					{{
 						t('snowflakestheme', 'Color number {number}', {
 							number: idx,
@@ -35,10 +35,10 @@ SPDX-License-Identifier: AGPL-3.0-or-later
 					}}
 				</div>
 				<ColorSelector
+					:key="'color' + idx"
 					:value="col"
 					:palette="colorPalette"
-					:numColors="value.color.length"
-					:key="'color' + idx"
+					:num-colors="value.color.length"
 					@drop-color="removeColor(idx)"
 					@value:update="setColor(idx, $event)" />
 			</template>
@@ -109,13 +109,11 @@ SPDX-License-Identifier: AGPL-3.0-or-later
 
 <script>
 import NcCheckboxRadioSwitch from '@nextcloud/vue/dist/Components/NcCheckboxRadioSwitch.js'
-import NcColorPicker from '@nextcloud/vue/dist/Components/NcColorPicker.js'
 import NcButton from '@nextcloud/vue/dist/Components/NcButton.js'
 
 import ColorSelector from './ColorSelector.vue'
 
 import PlusIcon from 'vue-material-design-icons/Plus.vue'
-import DeleteIcon from 'vue-material-design-icons/Delete.vue'
 
 import NumericInput from '../NumericInput.vue'
 
@@ -123,10 +121,8 @@ export default {
 	name: 'SnowflakesConfig',
 	components: {
 		NcCheckboxRadioSwitch,
-		NcColorPicker,
 		NcButton,
 		PlusIcon,
-		DeleteIcon,
 		NumericInput,
 		ColorSelector,
 	},

@@ -34,13 +34,13 @@ import DeleteIcon from 'vue-material-design-icons/Delete.vue'
 
 export default {
 	name: 'ColorSelector',
-	props: ['value', 'palette', 'numColors'],
-	emits: ['value:update', 'drop-color'],
 	components: {
 		NcButton,
 		NcColorPicker,
 		DeleteIcon,
 	},
+	props: ['value', 'palette', 'numColors'],
+	emits: ['value:update', 'drop-color'],
 }
 </script>
 
