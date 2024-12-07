@@ -42,7 +42,7 @@ export default {
 				enabled: true,
 				enabledPublicly: true,
 				numFlakes: 35,
-				color: ['#DDD', '#EEE'],
+				color: ['#DDDDDD', '#EEEEEE'],
 				speed: 0.75,
 				size: {
 					min: 5,
