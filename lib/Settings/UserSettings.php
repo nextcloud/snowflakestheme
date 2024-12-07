@@ -22,6 +22,7 @@ class UserSettings implements ISettings {
 	public function getForm() {
 		$params = [];
 		Util::addScript($this->appId, 'snowflakestheme-config');
+		Util::addStyle($this->appId, 'snowflakestheme-config');
 		return new TemplateResponse($this->appId, 'admin', $params);
 	}
 
