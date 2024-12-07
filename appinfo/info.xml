@@ -9,7 +9,7 @@
     <name>Snowflakes Theme</name>
     <summary>A simple app to show some snowflakes in the nextcloud web interface</summary>
     <description><![CDATA[This app just adds an overlay over all nextcloud pages to show a snowing effect.]]></description>
-    <version>1.1.2</version>
+    <version>1.1.3</version>
     <licence>agpl</licence>
     <author mail="github@christianwolf.email" >Christian Wolf</author>
     <namespace>SnowflakesTheme</namespace>
@@ -23,6 +23,5 @@
     <settings>
         <admin>OCA\SnowflakesTheme\Settings\AdminSettings</admin>
         <personal>OCA\SnowflakesTheme\Settings\UserSettings</personal>
-        <!-- <admin-section>OCA\NotesTutorial\Sections\NotesAdmin</admin-section> -->
     </settings>
 </info>
