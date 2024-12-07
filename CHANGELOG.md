@@ -1,5 +1,19 @@
 ## [Unreleased]
 
+## 1.1.3 2024-12-07 Update NC server and make compatible
+
+### Fixed
+
+- Issed with backend config fixed
+
+### Maintenance
+
+- Update various dependencies
+- Drop support for NC 27 and older
+- Switch to Vite bundler
+
+## 1.1.2 2023-12-10
+
 ### Fixed
 
 - Updated dependencies to fix any known bugs
