@@ -34,15 +34,13 @@ SPDX-License-Identifier: AGPL-3.0-or-later
 						})
 					}}
 				</div>
-				<div :key="'picker' + idx" class="color-picker">
-					<ColorSelector
-						:value="col"
-						:palette="colorPalette"
-						:numColors="value.color.length"
-						@drop-color="removeColor(idx)"
-						@value:update="setColor(idx, $event)" />
-					<div class="spacer" />
-				</div>
+				<ColorSelector
+					:value="col"
+					:palette="colorPalette"
+					:numColors="value.color.length"
+					:key="'color' + idx"
+					@drop-color="removeColor(idx)"
+					@value:update="setColor(idx, $event)" />
 			</template>
 			<div class="label" />
 			<NcButton @click="addColor">
@@ -239,13 +237,6 @@ export default {
 		row-gap: 5px;
 	}
 
-	.color-picker {
-		display: flex;
-
-		.color-removal {
-			margin: 0px 5px;
-		}
-	}
 }
 
 .color-row {
@@ -253,7 +244,4 @@ export default {
 	align-items: center;
 }
 
-.spacer {
-	flex: 0px 1 0;
-}
 </style>

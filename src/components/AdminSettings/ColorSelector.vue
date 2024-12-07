@@ -1,10 +1,10 @@
 <template>
 	<div class="color-picker">
 		<NcColorPicker
-			:value="value"
+			:model-value="value"
 			:palette="palette"
 			:advanced-fields="false"
-			@update:value="$emit('value:update', $event)">
+			@update:model-value="$emit('value:update', $event)">
 			<div class="color-row">
 				<div class="color-preview" :style="{ 'background-color': value }" />
 				<NcButton>{{ t('snowflakestheme', 'Change color') }}</NcButton>
