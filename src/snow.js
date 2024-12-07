@@ -13,8 +13,7 @@
  */
 
 import { loadState } from '@nextcloud/initial-state'
-
-(function() {
+;(function () {
 	// const val = loadState('myapp', 'user_preference')
 
 	// Provide a fallback value to return when the state is not found
@@ -60,7 +59,8 @@ import { loadState } from '@nextcloud/initial-state'
 	const snowRefresh = settings.refresh
 
 	// Additional Styles
-	const snowStyles = 'cursor: default; -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; -o-user-select: none; user-select: none;'
+	const snowStyles =
+		'cursor: default; -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; -o-user-select: none; user-select: none;'
 
 	/*
     // Experimental Configuration
@@ -125,9 +125,11 @@ import { loadState } from '@nextcloud/initial-state'
 			snow[i].style.fontSize = snow[i].size + 'px'
 			snow[i].style.color = snowColor[randomise(snowColor.length)]
 			snow[i].style.zIndex = snowZIndex
-			snow[i].sink = snowSpeed * snow[i].size / 5
+			snow[i].sink = (snowSpeed * snow[i].size) / 5
 			snow[i].posX = randomise(marginRight - snow[i].size)
-			snow[i].posY = randomise(2 * marginBottom - marginBottom - 2 * snow[i].size)
+			snow[i].posY = randomise(
+				2 * marginBottom - marginBottom - 2 * snow[i].size,
+			)
 			snow[i].style.left = snow[i].posX + 'px'
 			snow[i].style.top = snow[i].posY + 'px'
 		}
@@ -153,7 +155,10 @@ import { loadState } from '@nextcloud/initial-state'
 			snow[i].style.left = snow[i].posX + lefr[i] * Math.sin(coords[i]) + 'px'
 			snow[i].style.top = snow[i].posY + 'px'
 
-			if (snow[i].posY >= marginBottom - marginBottmTolerance * snow[i].size || parseInt(snow[i].style.left) > (marginRight - 3 * lefr[i])) {
+			if (
+				snow[i].posY >= marginBottom - marginBottmTolerance * snow[i].size ||
+				parseInt(snow[i].style.left) > marginRight - 3 * lefr[i]
+			) {
 				snow[i].posX = randomise(marginRight - snow[i].size)
 				snow[i].posY = 0
 			}

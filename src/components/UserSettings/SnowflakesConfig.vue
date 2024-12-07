@@ -4,7 +4,8 @@ SPDX-License-Identifier: AGPL-3.0-or-later
 -->
 <template>
 	<div>
-		<NcCheckboxRadioSwitch :checked="value.disabledForUser"
+		<NcCheckboxRadioSwitch
+			:checked="value.disabledForUser"
 			:type="'switch'"
 			@update:checked="toggleDisabled">
 			{{ t('snowflakestheme', 'Disable the app for the current user') }}
@@ -38,5 +39,4 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
-</style>
+<style lang="scss" scoped></style>

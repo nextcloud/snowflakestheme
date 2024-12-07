@@ -4,12 +4,14 @@ SPDX-License-Identifier: AGPL-3.0-or-later
 -->
 <template>
 	<div>
-		<NcCheckboxRadioSwitch :checked="value.enabled"
+		<NcCheckboxRadioSwitch
+			:checked="value.enabled"
 			:type="'switch'"
 			@update:checked="toggleEnable">
 			{{ t('snowflakestheme', 'Enable the snowflakes globally') }}
 		</NcCheckboxRadioSwitch>
-		<NcCheckboxRadioSwitch :checked="value.enabledPublicly"
+		<NcCheckboxRadioSwitch
+			:checked="value.enabledPublicly"
 			:type="'switch'"
 			@update:checked="toggleEnablePublicly">
 			{{ t('snowflakestheme', 'Enable the snowflakes on public pages') }}
@@ -18,38 +20,27 @@ SPDX-License-Identifier: AGPL-3.0-or-later
 			<div class="label">
 				{{ t('snowflakestheme', 'Number of flakes') }}
 			</div>
-			<NumericInput :value="value.numFlakes"
+			<NumericInput
+				:value="value.numFlakes"
 				:float="false"
 				:min="5"
 				:max="100"
 				@update:value="setNumFlakes" />
 			<template v-for="(col, idx) in value.color">
 				<div :key="'label' + idx" class="label">
-					{{ t('snowflakestheme', 'Color number {number}', {number: idx}) }}
+					{{
+						t('snowflakestheme', 'Color number {number}', {
+							number: idx,
+						})
+					}}
 				</div>
-				<div :key="'colorPicker' + idx"
-					class="color-picker">
-					<NcColorPicker :value="value.color[idx]"
-						:palette="colorPalette"
-						:advanced-fields="true"
-						@update:value="setColor(idx, $event)">
-						<div class="color-row">
-							<div class="color-preview"
-								:style="{ 'background-color': col }" />
-							<NcButton>{{ t('snowflakestheme', 'Change color') }}</NcButton>
-						</div>
-					</NcColorPicker>
-					<NcButton class="color-removal"
-						type="tertiary"
-						:disabled="value.color.length <= 1"
-						@click="removeColor(idx)">
-						{{ t('snowflakestheme', 'Drop color') }}
-						<template #icon>
-							<DeleteIcon :size="25" />
-						</template>
-					</NcButton>
-					<div class="spacer" />
-				</div>
+				<ColorSelector
+					:key="'color' + idx"
+					:value="col"
+					:palette="colorPalette"
+					:num-colors="value.color.length"
+					@drop-color="removeColor(idx)"
+					@value:update="setColor(idx, $event)" />
 			</template>
 			<div class="label" />
 			<NcButton @click="addColor">
@@ -61,7 +52,8 @@ SPDX-License-Identifier: AGPL-3.0-or-later
 			<div class="label">
 				{{ t('snowflakestheme', 'Speed of flakes') }}
 			</div>
-			<NumericInput :value="value.speed"
+			<NumericInput
+				:value="value.speed"
 				:float="true"
 				:min="0.1"
 				:max="5"
@@ -69,7 +61,8 @@ SPDX-License-Identifier: AGPL-3.0-or-later
 			<div class="label">
 				{{ t('snowflakestheme', 'Minimum size') }}
 			</div>
-			<NumericInput :value="value.size.min"
+			<NumericInput
+				:value="value.size.min"
 				:float="false"
 				:min="1"
 				:max="value.size.max"
@@ -77,7 +70,8 @@ SPDX-License-Identifier: AGPL-3.0-or-later
 			<div class="label">
 				{{ t('snowflakestheme', 'Maximum size') }}
 			</div>
-			<NumericInput :value="value.size.max"
+			<NumericInput
+				:value="value.size.max"
 				:float="false"
 				:min="value.size.min"
 				:max="150"
@@ -85,7 +79,8 @@ SPDX-License-Identifier: AGPL-3.0-or-later
 			<div class="label">
 				{{ t('snowflakestheme', 'Refresh interval') }}
 			</div>
-			<NumericInput :value="value.refresh"
+			<NumericInput
+				:value="value.refresh"
 				:float="false"
 				:min="5"
 				:max="50"
@@ -93,7 +88,8 @@ SPDX-License-Identifier: AGPL-3.0-or-later
 			<div class="label">
 				{{ t('snowflakestheme', 'Amount of left/right movement') }}
 			</div>
-			<NumericInput :value="value.lrMultiplicator"
+			<NumericInput
+				:value="value.lrMultiplicator"
 				:float="false"
 				:min="5"
 				:max="100"
@@ -101,7 +97,8 @@ SPDX-License-Identifier: AGPL-3.0-or-later
 			<div class="label">
 				{{ t('snowflakestheme', 'Speed of left/right movement') }}
 			</div>
-			<NumericInput :value="value.lrDivider"
+			<NumericInput
+				:value="value.lrDivider"
 				:float="false"
 				:min="5"
 				:max="100"
@@ -112,11 +109,11 @@ SPDX-License-Identifier: AGPL-3.0-or-later
 
 <script>
 import NcCheckboxRadioSwitch from '@nextcloud/vue/dist/Components/NcCheckboxRadioSwitch.js'
-import NcColorPicker from '@nextcloud/vue/dist/Components/NcColorPicker.js'
 import NcButton from '@nextcloud/vue/dist/Components/NcButton.js'
 
+import ColorSelector from './ColorSelector.vue'
+
 import PlusIcon from 'vue-material-design-icons/Plus.vue'
-import DeleteIcon from 'vue-material-design-icons/Delete.vue'
 
 import NumericInput from '../NumericInput.vue'
 
@@ -124,11 +121,10 @@ export default {
 	name: 'SnowflakesConfig',
 	components: {
 		NcCheckboxRadioSwitch,
-		NcColorPicker,
 		NcButton,
 		PlusIcon,
-		DeleteIcon,
 		NumericInput,
+		ColorSelector,
 	},
 	props: {
 		value: {
@@ -141,12 +137,12 @@ export default {
 	data() {
 		return {
 			colorPalette: [
-				'#FFF',
-				'#EEE',
-				'#DDD',
-				'#CCC',
-				'#BBB',
-				'#AAA',
+				'#FFFFFF',
+				'#EEEEEE',
+				'#DDDDDD',
+				'#CCCCCC',
+				'#BBBBBB',
+				'#AAAAAA',
 			],
 		}
 	},
@@ -228,7 +224,7 @@ export default {
 .settings {
 	.label {
 		display: flex;
-		margin: 8px 0px 0px
+		margin: 8px 0px 0px;
 	}
 
 	@media screen and (min-width: 1000px) {
@@ -236,22 +232,10 @@ export default {
 		grid-template-columns: 1fr 3fr;
 		row-gap: 5px;
 	}
-
-	.color-picker {
-		display: flex;
-
-		.color-removal {
-			margin: 0px 5px;
-		}
-	}
 }
 
 .color-row {
 	display: flex;
 	align-items: center;
-}
-
-.spacer {
-	flex: 0px 1 0;
 }
 </style>

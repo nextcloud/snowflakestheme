@@ -3,5 +3,14 @@
 module.exports = {
 	extends: [
 		'@nextcloud',
+		"prettier" // < this needs to be the last one to override all previous
+	],
+	"overrides": [
+		{
+			"files": ["**/*.vue"],
+			"rules": {
+				"vue/first-attribute-linebreak": "off"
+			}
+		}
 	]
 }

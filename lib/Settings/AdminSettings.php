@@ -22,6 +22,7 @@ class AdminSettings implements ISettings {
 	public function getForm() {
 		$params = [];
 		Util::addScript($this->appId, 'snowflakestheme-admin');
+		Util::addStyle($this->appId, 'snowflakestheme-admin');
 		return new TemplateResponse($this->appId, 'admin', $params);
 	}
 

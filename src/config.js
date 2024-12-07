@@ -10,5 +10,5 @@ Vue.mixin({ methods: { t, n } })
 
 export default new Vue({
 	el: '#config-snowflakestheme',
-	render: h => h(Settings),
+	render: (h) => h(Settings),
 })

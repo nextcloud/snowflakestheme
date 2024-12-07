@@ -4,9 +4,7 @@ SPDX-License-Identifier: AGPL-3.0-or-later
 -->
 <template>
 	<div>
-		<NcTextField :value.sync="currentValue"
-			:error="error"
-			@change="onChange" />
+		<NcTextField :value.sync="currentValue" :error="error" @change="onChange" />
 	</div>
 </template>
 
@@ -21,19 +19,27 @@ export default {
 	props: {
 		value: {
 			type: Number,
-			default() { return 35 },
+			default() {
+				return 35
+			},
 		},
 		min: {
 			type: Number,
-			default() { return 5 },
+			default() {
+				return 5
+			},
 		},
 		max: {
 			type: Number,
-			default() { return 100 },
+			default() {
+				return 100
+			},
 		},
 		float: {
 			type: Boolean,
-			default() { return false },
+			default() {
+				return false
+			},
 		},
 	},
 	data() {
@@ -59,7 +65,11 @@ export default {
 			}
 		},
 		valid() {
-			return this.validNumber && (this.numericValue >= this.min) && (this.numericValue <= this.max)
+			return (
+				this.validNumber &&
+				this.numericValue >= this.min &&
+				this.numericValue <= this.max
+			)
 		},
 		error() {
 			return !this.valid

@@ -15,4 +15,7 @@ module.exports = webpackMerge.merge(webpackConfig, {
 	plugins: [
 		new CleanWebpackPlugin(),
 	],
+	devServer: {
+		allowedHosts: 'all',
+	},
 });
