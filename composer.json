@@ -13,7 +13,7 @@
 		"sabre/dav": "^4.1",
 		"sabre/xml": "^2.2",
 		"symfony/event-dispatcher": "^5.3.11",
-		"psalm/phar": "^5.17",
+		"psalm/phar": "^6.1",
 		"nextcloud/coding-standard": "^1.0",
 		"friendsofphp/php-cs-fixer": "^3.13"
 	},
