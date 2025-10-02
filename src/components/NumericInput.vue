@@ -66,9 +66,9 @@ export default {
 		},
 		valid() {
 			return (
-				this.validNumber &&
-				this.numericValue >= this.min &&
-				this.numericValue <= this.max
+				this.validNumber
+				&& this.numericValue >= this.min
+				&& this.numericValue <= this.max
 			)
 		},
 		error() {
