@@ -156,8 +156,8 @@ import { loadState } from '@nextcloud/initial-state'
 			snow[i].style.top = snow[i].posY + 'px'
 
 			if (
-				snow[i].posY >= marginBottom - marginBottmTolerance * snow[i].size ||
-				parseInt(snow[i].style.left) > marginRight - 3 * lefr[i]
+				snow[i].posY >= marginBottom - marginBottmTolerance * snow[i].size
+				|| parseInt(snow[i].style.left) > marginRight - 3 * lefr[i]
 			) {
 				snow[i].posX = randomise(marginRight - snow[i].size)
 				snow[i].posY = 0
