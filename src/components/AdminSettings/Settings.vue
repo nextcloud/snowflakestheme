@@ -21,8 +21,8 @@ SPDX-License-Identifier: AGPL-3.0-or-later
 </template>
 
 <script>
-import NcSettingsSection from '@nextcloud/vue/dist/Components/NcSettingsSection.js'
-import NcLoadingIcon from '@nextcloud/vue/dist/Components/NcLoadingIcon.js'
+import NcSettingsSection from '@nextcloud/vue/components/NcSettingsSection'
+import NcLoadingIcon from '@nextcloud/vue/components/NcLoadingIcon'
 
 import axios from '@nextcloud/axios'
 import { generateUrl } from '@nextcloud/router'

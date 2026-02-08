@@ -4,12 +4,12 @@ SPDX-License-Identifier: AGPL-3.0-or-later
 -->
 <template>
 	<div>
-		<NcTextField :value.sync="currentValue" :error="error" @change="onChange" />
+		<NcTextField v-model="currentValue" :error="error" @change="onChange" />
 	</div>
 </template>
 
 <script>
-import NcTextField from '@nextcloud/vue/dist/Components/NcTextField.js'
+import NcTextField from '@nextcloud/vue/components/NcTextField'
 
 export default {
 	name: 'NumericInput',
@@ -42,6 +42,7 @@ export default {
 			},
 		},
 	},
+	emits: ['update:value'],
 	data() {
 		return {
 			currentValue: '0',
@@ -76,7 +77,7 @@ export default {
 		},
 	},
 	watch: {
-		value(val, oldVal) {
+		value(val) {
 			this.currentValue = String(val)
 		},
 	},

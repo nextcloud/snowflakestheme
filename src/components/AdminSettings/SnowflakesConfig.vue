@@ -5,15 +5,15 @@ SPDX-License-Identifier: AGPL-3.0-or-later
 <template>
 	<div>
 		<NcCheckboxRadioSwitch
-			:checked="value.enabled"
+			:model-value="value.enabled"
 			:type="'switch'"
-			@update:checked="toggleEnable">
+			@update:model-value="toggleEnable">
 			{{ t('snowflakestheme', 'Enable the snowflakes globally') }}
 		</NcCheckboxRadioSwitch>
 		<NcCheckboxRadioSwitch
-			:checked="value.enabledPublicly"
+			:model-value="value.enabledPublicly"
 			:type="'switch'"
-			@update:checked="toggleEnablePublicly">
+			@update:model-value="toggleEnablePublicly">
 			{{ t('snowflakestheme', 'Enable the snowflakes on public pages') }}
 		</NcCheckboxRadioSwitch>
 		<div class="settings">
@@ -26,8 +26,8 @@ SPDX-License-Identifier: AGPL-3.0-or-later
 				:min="5"
 				:max="100"
 				@update:value="setNumFlakes" />
-			<template v-for="(col, idx) in value.color">
-				<div :key="'label' + idx" class="label">
+			<template v-for="(col, idx) in value.color" :key="'label' + idx">
+				<div class="label">
 					{{
 						t('snowflakestheme', 'Color number {number}', {
 							number: idx,
@@ -35,12 +35,11 @@ SPDX-License-Identifier: AGPL-3.0-or-later
 					}}
 				</div>
 				<ColorSelector
-					:key="'color' + idx"
 					:value="col"
 					:palette="colorPalette"
 					:num-colors="value.color.length"
 					@drop-color="removeColor(idx)"
-					@value:update="setColor(idx, $event)" />
+					@update:value="setColor(idx, $event)" />
 			</template>
 			<div class="label" />
 			<NcButton @click="addColor">
@@ -108,8 +107,8 @@ SPDX-License-Identifier: AGPL-3.0-or-later
 </template>
 
 <script>
-import NcCheckboxRadioSwitch from '@nextcloud/vue/dist/Components/NcCheckboxRadioSwitch.js'
-import NcButton from '@nextcloud/vue/dist/Components/NcButton.js'
+import NcCheckboxRadioSwitch from '@nextcloud/vue/components/NcCheckboxRadioSwitch'
+import NcButton from '@nextcloud/vue/components/NcButton'
 
 import ColorSelector from './ColorSelector.vue'
 
@@ -134,6 +133,7 @@ export default {
 			},
 		},
 	},
+	emits: ['update:value', 'update:color'],
 	data() {
 		return {
 			colorPalette: [
