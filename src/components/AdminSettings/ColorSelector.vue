@@ -28,8 +28,8 @@ SPDX-License-Identifier: AGPL-3.0-or-later
 </template>
 
 <script>
-import NcColorPicker from '@nextcloud/vue/dist/Components/NcColorPicker.js'
-import NcButton from '@nextcloud/vue/dist/Components/NcButton.js'
+import NcColorPicker from '@nextcloud/vue/components/NcColorPicker'
+import NcButton from '@nextcloud/vue/components/NcButton'
 import DeleteIcon from 'vue-material-design-icons/Delete.vue'
 
 export default {
