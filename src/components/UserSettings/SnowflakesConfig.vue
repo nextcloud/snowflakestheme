@@ -5,9 +5,9 @@ SPDX-License-Identifier: AGPL-3.0-or-later
 <template>
 	<div>
 		<NcCheckboxRadioSwitch
-			:checked="value.disabledForUser"
+			:model-value="value.disabledForUser"
 			:type="'switch'"
-			@update:checked="toggleDisabled">
+			@update:model-value="toggleDisabled">
 			{{ t('snowflakestheme', 'Disable the app for the current user') }}
 		</NcCheckboxRadioSwitch>
 	</div>
@@ -29,6 +29,7 @@ export default {
 			},
 		},
 	},
+	emits: ['update:value'],
 	methods: {
 		toggleDisabled() {
 			const ret = this.value

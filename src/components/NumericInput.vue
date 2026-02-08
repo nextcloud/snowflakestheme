@@ -4,7 +4,7 @@ SPDX-License-Identifier: AGPL-3.0-or-later
 -->
 <template>
 	<div>
-		<NcTextField :value.sync="currentValue" :error="error" @change="onChange" />
+		<NcTextField v-model="currentValue" :error="error" @change="onChange" />
 	</div>
 </template>
 
@@ -42,6 +42,7 @@ export default {
 			},
 		},
 	},
+	emits: ['update:value'],
 	data() {
 		return {
 			currentValue: '0',

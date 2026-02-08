@@ -5,15 +5,15 @@ SPDX-License-Identifier: AGPL-3.0-or-later
 <template>
 	<div>
 		<NcCheckboxRadioSwitch
-			:checked="value.enabled"
+			:model-value="value.enabled"
 			:type="'switch'"
-			@update:checked="toggleEnable">
+			@update:model-value="toggleEnable">
 			{{ t('snowflakestheme', 'Enable the snowflakes globally') }}
 		</NcCheckboxRadioSwitch>
 		<NcCheckboxRadioSwitch
-			:checked="value.enabledPublicly"
+			:model-value="value.enabledPublicly"
 			:type="'switch'"
-			@update:checked="toggleEnablePublicly">
+			@update:modelValue="toggleEnablePublicly">
 			{{ t('snowflakestheme', 'Enable the snowflakes on public pages') }}
 		</NcCheckboxRadioSwitch>
 		<div class="settings">
@@ -26,8 +26,8 @@ SPDX-License-Identifier: AGPL-3.0-or-later
 				:min="5"
 				:max="100"
 				@update:value="setNumFlakes" />
-			<template v-for="(col, idx) in value.color">
-				<div :key="'label' + idx" class="label">
+			<template v-for="(col, idx) in value.color" :key="'label' + idx">
+				<div class="label">
 					{{
 						t('snowflakestheme', 'Color number {number}', {
 							number: idx,
@@ -35,7 +35,6 @@ SPDX-License-Identifier: AGPL-3.0-or-later
 					}}
 				</div>
 				<ColorSelector
-					:key="'color' + idx"
 					:value="col"
 					:palette="colorPalette"
 					:num-colors="value.color.length"
@@ -134,6 +133,7 @@ export default {
 			},
 		},
 	},
+	emits: ['update:value', 'update:color'],
 	data() {
 		return {
 			colorPalette: [
