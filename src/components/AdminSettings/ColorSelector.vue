@@ -8,7 +8,7 @@ SPDX-License-Identifier: AGPL-3.0-or-later
 			:model-value="value"
 			:palette="palette"
 			:advanced-fields="false"
-			@update:model-value="$emit('value:update', $event)">
+			@update:model-value="$emit('update:value', $event)">
 			<div class="color-row">
 				<div class="color-preview" :style="{ 'background-color': value }" />
 				<NcButton>{{ t('snowflakestheme', 'Change color') }}</NcButton>
@@ -18,7 +18,7 @@ SPDX-License-Identifier: AGPL-3.0-or-later
 			class="color-removal"
 			type="tertiary"
 			:disabled="numColors <= 1"
-			@click="$emit('drop-color')">
+			@click="$emit('dropColor')">
 			{{ t('snowflakestheme', 'Drop color') }}
 			<template #icon>
 				<DeleteIcon :size="25" />
@@ -40,7 +40,7 @@ export default {
 		DeleteIcon,
 	},
 	props: ['value', 'palette', 'numColors'],
-	emits: ['value:update', 'drop-color'],
+	emits: ['update:value', 'dropColor'],
 }
 </script>
 

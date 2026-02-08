@@ -77,7 +77,7 @@ export default {
 		},
 	},
 	watch: {
-		value(val, oldVal) {
+		value(val) {
 			this.currentValue = String(val)
 		},
 	},

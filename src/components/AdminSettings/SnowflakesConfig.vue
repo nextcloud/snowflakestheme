@@ -13,7 +13,7 @@ SPDX-License-Identifier: AGPL-3.0-or-later
 		<NcCheckboxRadioSwitch
 			:model-value="value.enabledPublicly"
 			:type="'switch'"
-			@update:modelValue="toggleEnablePublicly">
+			@update:model-value="toggleEnablePublicly">
 			{{ t('snowflakestheme', 'Enable the snowflakes on public pages') }}
 		</NcCheckboxRadioSwitch>
 		<div class="settings">
@@ -39,7 +39,7 @@ SPDX-License-Identifier: AGPL-3.0-or-later
 					:palette="colorPalette"
 					:num-colors="value.color.length"
 					@drop-color="removeColor(idx)"
-					@value:update="setColor(idx, $event)" />
+					@update:value="setColor(idx, $event)" />
 			</template>
 			<div class="label" />
 			<NcButton @click="addColor">
