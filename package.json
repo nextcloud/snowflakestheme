@@ -45,7 +45,7 @@
     "@nextcloud/prettier-config": "^1.1.0",
     "@nextcloud/stylelint-config": "^3.2.2",
     "@nextcloud/vite-config": "^2.5.2",
-    "baseline-browser-mapping": "^2.10.34",
+    "baseline-browser-mapping": "^2.10.35",
     "eslint-config-prettier": "^10.0.2",
     "prettier": "^3.8.4",
     "sass-embedded": "^1.100.0",
