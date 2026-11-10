@@ -48,7 +48,7 @@
     "baseline-browser-mapping": "^2.11.34",
     "eslint-config-prettier": "^10.0.2",
     "prettier": "^3.9.10",
-    "sass-embedded": "^1.107.0",
+    "sass-embedded": "^1.108.1",
     "vite": "^7.3.7",
     "vite-plugin-clean": "^2.0.1"
   }
